@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table,th,td {
+            border-collapse: collapse;
+            border: black solid 1px;
+        }
+    </style>
+</head>
+<body>
+<h1>List songs</h1>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Path</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item,index : ${list}">
+        <td th:text="${index.index + 1}"></td>
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.path}"></td>
+    </tr>
+    </tbody>
+
+</table>
+<form action="/music/save" method="post">
+    <input name="name">
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
